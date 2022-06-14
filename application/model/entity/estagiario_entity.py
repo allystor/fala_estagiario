@@ -1,11 +1,10 @@
-
 class Estagiario:
-    def __init__(self,nome,comentario):
-        self.__nome = nome
-        self.__comentario = comentario
+    def __init__(self,nome,conteudo):
+        self.nome = nome
+        self.conteudo = conteudo
     
     def get_nome(self):
-        return self.__nome
+        return self.nome
 
-    def get_comentario(self):
-        return self.__comentario
+    def get_conteudo(self):
+        return self.conteudo

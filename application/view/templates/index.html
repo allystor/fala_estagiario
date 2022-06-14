@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="conteiner">
-        <div class="row">
+        <div class="d-flex justify-content-between">
             <div class="col-md-12">
                 <h1>Fala estagiário</h1>
             </div>
@@ -22,37 +22,34 @@
                     <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
                 </div>
                 <div class="form-group">
-                    <label for="comentario">Comentário</label>
-                    <textarea class="form-control" id="comentario" name="comentario" rows="3" maxlength="200"></textarea>
+                    <label for="conteudo">Comentário</label>
+                    <textarea class="form-control" id="comentario" name="conteudo" rows="3" maxlength="200"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
-        {% for estagiario in estagiario %}
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>{{estagiario.nome()}}</h2>
+        <div class="d-flex flex-wrap">
+            {% for comentario in comentario %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>{{comentario.get_nome()}}</h2>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <p>{{estagiario.comentario()}}</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>{{comentario.get_conteudo()}}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <p>{{estagiario.horaDePostagem()}}</p>
+                <div class="row">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Likes: <span class="post-likes">{{comentario.curtidas}}</span>  {{comentario.horaDePostagem()}}</li>
+                        <li class="list-group-item"><button onclick="like()" class="btn btn-primary">Like</button></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <form action="{{url_for('curtidas')}}">
-                        <button onclick="like(this)" class="fa fa-thumbs-up" type="submit">Curtir</button>
-                    </form>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+        </div>
+
     <script src="/application/view/static/scripts./like.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

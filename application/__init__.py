@@ -7,3 +7,4 @@ app = Flask(__name__,
 )
 
 from application.controller import index_controller
+from application.controller import comentario_controller
