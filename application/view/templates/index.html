@@ -10,12 +10,10 @@
 </head>
 <body>
     <div class="conteiner">
-        <div class="d-flex justify-content-between">
-            <div class="col-md-12">
-                <h1>Fala estagiário</h1>
-            </div>
+        <div class="col-md-12" style="text-align: center">
+            <h1>Fala estagiário</h1>
         </div>
-        <div>
+        <div class="formulario">
             <form action="{{url_for('comentar')}}" method="POST">
                 <div class="form-group">
                     <label for="nome">Nome</label>
@@ -28,28 +26,19 @@
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
-        <div class="d-flex flex-wrap">
-            {% for comentario in comentario %}
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>{{ comentario.nome }}</h2>
+        <div class="gap-5 flex-wrap d-flex justify-content-between" id="resposta">
+            {% for Comentario in comentario %}
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ Comentario.nome }}</h5>
+                        <p class="card-text">{{ Comentario.conteudo }}</p>
+                        <p class="card-text"><small class="text-muted">{{ Comentario._data }}</small></p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>{{ comentario.conteudo }}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>{{ comentario.data }}</p>
-                    </div>
-                </div>
+            </div>
             {% endfor %}
         </div>
-        </div>
-
-    <script src="/application/view/static/scripts./like.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

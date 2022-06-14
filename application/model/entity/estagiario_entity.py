@@ -10,9 +10,11 @@ class Estagiario:
         self._curtidas = 0
         self.nome = nome
         self.conteudo = conteudo
+        self.curtidas = self._curtidas
     
     def get_nome(self):
         return self.nome
 
     def get_conteudo(self):
         return self.conteudo
+    
