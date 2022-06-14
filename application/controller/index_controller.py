@@ -1,10 +1,9 @@
-from crypt import methods
 from application import app
-from application.model.dao.comentario_dao import ComentarioDAO
-from application.model.entity.estagiario_entity import Estagiario
+from application.model.dao import ComentarioDAO
 from flask import render_template
 
 @app.route('/', methods=['GET'])
 def index():
-    comentario = ComentarioDAO.ordenarComentarios()
-    return render_template('index.html',comentario=comentario)
+    lista = ComentarioDAO.Lista()
+    ordenar = sorted(lista, key=lambda comentario: comentario._data, reverse=True)
+    return render_template('index.html',comentarios=ordenar)

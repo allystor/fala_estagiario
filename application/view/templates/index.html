@@ -19,11 +19,11 @@
             <form action="{{url_for('comentar')}}" method="POST">
                 <div class="form-group">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                    <input type="text" class="form-control" id="nome" name="nome" required>
                 </div>
                 <div class="form-group">
                     <label for="conteudo">Comentário</label>
-                    <textarea class="form-control" id="comentario" name="conteudo" rows="3" maxlength="200"></textarea>
+                    <textarea class="form-control" id="conteudo" name="conteudo" rows="3" maxlength="200" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
@@ -32,19 +32,18 @@
             {% for comentario in comentario %}
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>{{comentario.get_nome()}}</h2>
+                        <h2>{{ comentario.nome }}</h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <p>{{comentario.get_conteudo()}}</p>
+                        <p>{{ comentario.conteudo }}</p>
                     </div>
                 </div>
                 <div class="row">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Likes: <span class="post-likes">{{comentario.curtidas}}</span>  {{comentario.horaDePostagem()}}</li>
-                        <li class="list-group-item"><button onclick="like()" class="btn btn-primary">Like</button></li>
-                    </ul>
+                    <div class="col-md-12">
+                        <p>{{ comentario.data }}</p>
+                    </div>
                 </div>
             {% endfor %}
         </div>
